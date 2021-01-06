@@ -1,4 +1,4 @@
-module github.com/kackerx/ktools
+module github.com/kackerx/katools
 
 go 1.15
 
