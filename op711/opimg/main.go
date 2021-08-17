@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/kackerx/ktools"
+	"github.com/kackerx/katools"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"strings"
@@ -32,14 +32,14 @@ func main() {
 		imgUrl  string
 		err     error
 	)
-	dsn := "mysqlConnectConfig"
+	dsn := "read:Wasd4044516520@tcp(101.33.117.86:3306)/kingvstr_dy?charset=utf8"
 	if db, err = gorm.Open(mysql.Open(dsn), &gorm.Config{}); err != nil {
 		fmt.Println(err)
 		return
 	}
 
 	var videos []Video
-	ret := db.Order("v_addtime desc").Limit(100).Find(&videos)
+	ret := db.Order("v_addtime desc").Limit(150).Find(&videos)
 	if ret.Error != nil {
 		fmt.Println(ret.Error)
 		return
@@ -53,7 +53,7 @@ func main() {
 			//upDatas.Store(item.Vid, &item)
 		}
 	}
-	fmt.Println(upDatas)
+	fmt.Println(len(upDatas), "条更新")
 
 	wg.Add(len(upDatas))
 	//upDatas.Range(func(key, value interface{}) bool {
@@ -63,7 +63,7 @@ func main() {
 	for _, v := range upDatas {
 		go func(video Video) {
 			defer wg.Done()
-			if imgUrl, err = ktools.UploadImg(video.Pic); err != nil {
+			if imgUrl, err = katools.UploadImg(video.Pic); err != nil {
 				fmt.Println(err)
 				return
 			}

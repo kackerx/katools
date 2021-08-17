@@ -1,4 +1,4 @@
-package ktools
+package katools
 
 import (
 	"encoding/json"
@@ -46,7 +46,7 @@ func getToken() (tokenStr string) {
 		Scheme:   "https",
 		Host:     "upload-ugc.bz.mgtv.com",
 		Path:     "upload/image/getStsToken",
-		RawQuery: "uuid=2c9ce736a2694b5b8dd4cf309b677a2f&ticket=BRAEK1IU3DU717N47ANG&biz=1&num=1&callback=jQuery182005832266842939937_1591011852911&_support=10000000&_=1591011884333",
+		RawQuery: "uuid=389edfe9aedc4e48afc06487f8f90861&ticket=7D1BE0DD226339228743A98FBCC69AC4&biz=1&num=1&callback=jQuery18208424735478961658_1629192796363&_support=10000000&_=1629192820262",
 	}
 	if request, err = http.NewRequest(http.MethodGet, tokenUri.String(), nil); err != nil {
 		fmt.Println(err)
@@ -63,7 +63,7 @@ func getToken() (tokenStr string) {
 		"sec-fetch-dest":  "script",
 		"referer":         "https://www.mgtv.com/b/338408/8231766.html?fpa=se&lastp=so_result",
 		"accept-language": "zh-CN,zh;q=0.9,en;q=0.8,la;q=0.7",
-		"cookie":          "__STKUUID=56977c5b-7bb9-4dce-9bfb-4504d3b03b35; mba_deviceid=d5de0866-2126-36b1-d6bc-d81dc685a555; MQGUID=1263467303526383616; __MQGUID=1263467303526383616; pc_v6=v6; _source_=C; PLANB_FREQUENCY=XsaHekEI7nBda-UG; __random_seed=0.09710746912465718; __gads=ID=5a426adf65fcb414:T=1590069115:S=ALNI_MbjtIzVPfp7KjnKslTuXdr6aWe8yw; PM_CHKID=a344546caaf6da69; sessionid=1591011742282; mba_sessionid=f8cd99a8-42ef-7ee8-6e6f-ed46a85ab06c; beta_timer=1591011743950; id=63530547; rnd=rnd; seqid=braek1sr1q1gmk1e4egg; uuid=2c9ce736a2694b5b8dd4cf309b677a2f; vipStatus=3; wei=1a119c627f24dd8ab8bad24e573cb744; wei2=5c14DHntEgaWKDdjHc6c62QLi8HGYlktLJSLQ8abWHVGt91Nqo13SLrvaW%2B9H07trkaV3NRRBy30j1CX0NQ7kJl2JJm0ZS4ck0sVgT9EWndzBVNl4tRlOkfSh0wosk3tIXn%2BjEqTxCfBLH%2BGDPe%2Fw2Slb12JjW3xLubeJaXTE6J6bD6f9WakDdLUIG6xbkT0OqpbMqPOC4Lrhv3R0td%2B0HHSKzo; HDCN=BRAEK1IU3DU717N47ANG-248244420; mba_last_action_time=1591011860129; lastActionTime=1591011881735",
+		"cookie":          "_source_=C; __STKUUID=cd318ade-b019-4154-8107-ba041fec0a78; PLANB_FREQUENCY=YJZ9HSCYw0r8lQWz_21050819; MQGUID=1390998916581019648; __MQGUID=1390998916581019648; mba_deviceid=7784f841-fee4-6fe6-d607-431af05bd9a8; __random_seed=0.9222008335131051; PM_CHKID=f4f3ce5cc212f7d8; mg_uuid=ba18b8b7-9b22-4e2c-95b9-bae9537dc53b; NUC_STATE=1629192769.xolvoAWiekrbca-B8z86q4u9MuA; loginAccount=18838974677; uuid=389edfe9aedc4e48afc06487f8f90861; vipStatus=3; rnd=rnd; id=77573232; wei=7a2e64709ca753b3338e667d546153cb; wei2=7c83gWi6PMZ1jieQaKmcVeR%2FVuzCxxyEgJBKwOVmgDbpao%2B7NWoT%2BnFkHG%2FTLlmWm1DnskX53e1nbdPtzGL1JWZCj30QvUmouZpzxV9TETFDVF7XRQT6Ij3k10vHDb4zGtyNSejTq4LEEvnpJFi78zAA%2Fxn4w%2FpkW374DKBhF4C229%2Bd0f2lVo1GJreMDAtRts%2BFHDMfacd5; HDCN=7D1BE0DD226339228743A98FBCC69AC4-701210564; sessionid=1629192797312; mba_sessionid=45aec5c8-d304-a20e-aef2-d6434230aee1; mba_last_action_time=1629192802446; beta_timer=1629192803404; lastActionTime=1629192819464",
 	}
 	for k, v := range header {
 		request.Header.Add(k, v)
@@ -130,7 +130,7 @@ func UploadImg(rawImg string) (ret string, err error) {
 	date := authJson["date"]
 
 	ret = fmt.Sprintf("https://mgtv-bbqn.oss-cn-beijing.aliyuncs.com/%s.jpeg", keys)
-	if resp, err = http.Get(rawImg); err != nil {
+	if resp, err = http.Get(strings.Replace(rawImg, "\n", "", -1)); err != nil {
 		fmt.Println(err)
 		return
 	}
@@ -170,11 +170,11 @@ func UploadImg(rawImg string) (ret string, err error) {
 	return
 }
 
-//func main() {
-//	var ret string
-//	if ret, err = uploadImg("https://entgo.io/assets/gopher-schema-as-code.png"); err != nil {
-//		fmt.Println(err)
-//		return
-//	}
-//	fmt.Println(ret)
-//}
+func main() {
+	var ret string
+	if ret, err = UploadImg("https://entgo.io/assets/gopher-schema-as-code.png"); err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println(ret)
+}

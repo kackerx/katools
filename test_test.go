@@ -1,20 +1,12 @@
-package ktools
+package katools
 
 import (
 	"fmt"
-	"sync"
 	"testing"
+	"time"
 )
 
 func TestName(t *testing.T) {
-
-	var retMap sync.Map
-	retMap.Store("st", "st")
-	retMap.Store("s", "s")
-	retMap.Store("sst", "sst")
-	retMap.Range(func(key, value interface{}) bool {
-		fmt.Println(value)
-		return true
-	})
+	fmt.Println(time.Now().Unix())
 }
 
