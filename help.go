@@ -1,14 +1,23 @@
 package katools
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
+	"io"
 	"io/ioutil"
+	"mime/multipart"
 	"net/http"
 	"net/url"
 	"regexp"
 	"strings"
 )
+
+type Img struct {
+	Data struct {
+		Url string `json:"url"`
+	} `json:"data"`
+}
 
 var (
 	err error
@@ -46,7 +55,7 @@ func getToken() (tokenStr string) {
 		Scheme:   "https",
 		Host:     "upload-ugc.bz.mgtv.com",
 		Path:     "upload/image/getStsToken",
-		RawQuery: "uuid=389edfe9aedc4e48afc06487f8f90861&ticket=7D1BE0DD226339228743A98FBCC69AC4&biz=1&num=1&callback=jQuery18208424735478961658_1629192796363&_support=10000000&_=1629192820262",
+		RawQuery: "uuid=18d6436f26ce4d7ba0d258c439a736a5&ticket=E29530A8ABC7390A92E8A481B8767814&biz=1&num=1&callback=jQuery18205619504208532247_1631539923435&_support=10000000&_=1631539954417",
 	}
 	if request, err = http.NewRequest(http.MethodGet, tokenUri.String(), nil); err != nil {
 		fmt.Println(err)
@@ -170,11 +179,55 @@ func UploadImg(rawImg string) (ret string, err error) {
 	return
 }
 
-func main() {
-	var ret string
-	if ret, err = UploadImg("https://entgo.io/assets/gopher-schema-as-code.png"); err != nil {
-		fmt.Println(err)
-		return
+func UploadImgTx(rawImg string) (ret string, err error) {
+	targetUrl := "https://om.qq.com/image/orginalupload"
+	resp, err := http.Get(rawImg)
+	if err != nil {
+		return "http://www.hulupa.com/zuoz/img/load.gif", nil
 	}
-	fmt.Println(ret)
+	defer resp.Body.Close()
+
+	payload, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		panic(err)
+	}
+
+	buf := &bytes.Buffer{}
+	w := multipart.NewWriter(buf)
+
+	fileWriter, err := w.CreateFormFile("Filedata", rawImg)
+	if err != nil {
+		panic(err)
+	}
+
+	io.Copy(fileWriter, bytes.NewReader(payload))
+	contentType := w.FormDataContentType()
+	w.Close()
+
+	resp, err = http.Post(targetUrl, contentType, buf)
+	if err != nil {
+		panic(err)
+	}
+
+	retImg, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		panic(err)
+	}
+
+	var m Img
+	err = json.Unmarshal(retImg, &m)
+	if err != nil {
+		return "http://www.hulupa.com/zuoz/img/load.gif", nil
+	}
+	
+	return m.Data.Url, nil
 }
+
+//func main() {
+//	var ret string
+//	if _, err = UploadImgTx("https://s0.lgstatic.com/i/image/M00/5B/9C/Ciqc1F9_0LeARfzsAAE16bQXukg851.png"); err != nil {
+//		fmt.Println(err)
+//		return
+//	}
+//	fmt.Println(ret)
+//}
