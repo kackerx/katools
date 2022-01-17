@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option go_package = "./proto";
+
+package go.micro.service.kacker;
+
+
+service Hello {
+  rpc SayHello(Req) returns (Res);
+}
+
+message Req {
+  string msg = 1;
+}
+
+message Res {
+  string ans = 1;
+}
