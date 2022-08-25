@@ -2,35 +2,55 @@ package main
 
 import (
     "fmt"
-    "github.com/kackerx/katools/requests"
-    "github.com/tidwall/gjson"
-    "log"
 )
 
-var (
-    SEC_UID = "MS4wLjABAAAASIXegoQCyol8Vty3JdAcYoM_NegtJcUMEJET1nhkhsI"
-    SEC_USER_INFO = "https://www.iesdouyin.com/web/api/v2/user/info/?sec_uid=%s"
+// ISendJiangPin 发奖品的接口
+type ISendJiangPin interface {
+    send()
+}
 
-)
+type GoodsJiang struct{}
+
+func (g GoodsJiang) send() {
+    fmt.Println("发产品奖品")
+}
+
+type CardJiang struct{}
+
+func (c CardJiang) send() {
+    fmt.Println("发卡券奖品")
+}
+
+type JiangFactory interface {
+    CreateJiang() ISendJiangPin
+}
+
+type GoodsJiangFactory struct{}
+
+func (g GoodsJiangFactory) CreateJiang() ISendJiangPin {
+    return GoodsJiang{}
+}
+
+type CardJiangFactory struct{}
+
+func (c CardJiangFactory) CreateJiang() ISendJiangPin {
+    return CardJiang{}
+}
+
+func factory(jiangFactory JiangFactory) ISendJiangPin {
+    return jiangFactory.CreateJiang()
+}
 
 func main() {
-    
-    resp, err := requests.Get(fmt.Sprintf(SEC_USER_INFO, SEC_UID))
-    if err != nil {
-        log.Fatalln(err)
-    }
-    
-    nickname := gjson.Get(string(resp), "user_info.nickname").Str
-    followerNum := gjson.Get(string(resp), "user_info.follower_count").Int()
-    favoriteNum := gjson.Get(string(resp), "user_info.favoriting_count").Int()
-    sign := gjson.Get(string(resp), "user_info.signature").Str
-    
-    fmt.Println(nickname)
-    fmt.Println(followerNum)
-    fmt.Println(favoriteNum)
-    fmt.Println(sign)
-    
-    
 
+    m := make([]int, 5)
+    fmt.Println(len(m))
+    fmt.Println(cap(m))
+
+    var jiangpin1 ISendJiangPin = factory(GoodsJiangFactory{})
+    jiangpin1.send()
+
+    var jiangpin2 ISendJiangPin = factory(CardJiangFactory{})
+    jiangpin2.send()
 
 }

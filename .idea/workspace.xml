@@ -1,8 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="61ad5663-d9b2-4ef4-82bc-dab781d2149f" name="变更" comment="">
+      <change afterPath="$PROJECT_DIR$/cmd/aizhan/domain.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmd/aizhan/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/design/dependency-inversion/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/design/options/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/encrypt/hash/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/a/a.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/b/b.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/script/douyin/test/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spider/xhpp/xhpp.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/std-party/bytes/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/std-party/concurrency/channel/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/std-party/concurrency/condition/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/std-party/concurrency/error-handle/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/std-party/concurrency/or-channel/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/std-party/concurrency/pattern/pingzhang/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/std-party/concurrency/pattern/weilai/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/std-party/concurrency/pipline/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/std-party/concurrency/pool/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/std-party/context/example/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/std-party/context/example/server/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/std-party/defer/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/std-party/error/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/std-party/for/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/std-party/net/net/client/client.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/std-party/net/net/server.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/std-party/reflect/make_func.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/std-party/reflect/reflect.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/std-party/reflect/reflect_to_interface.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/std-party/reflect/test/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/std-party/string/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/std-party/string/t.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/std-party/time/time.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thirty-party/gin/controllers/video-controller.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thirty-party/gin/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thirty-party/gin/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thirty-party/gin/models/video.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thirty-party/gorm/query/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thirty-party/mongodb/demo/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thirty-party/pflag/conf/conf.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thirty-party/rds/bitmap/sign.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thirty-party/rds/lock/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thirty-party/rds/lock2/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thirty-party/rds/redis.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thirty-party/rds/transaction/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algo/hash/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/algo/hash/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/algo/test/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/algo/test/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/douyin/live/live_handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/script/douyin/live/live_handler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/douyin/live/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/script/douyin/live/test.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/std-party/dir/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/std-party/dir/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/std-party/net/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/std-party/net/server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/std-party/unsafe/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/std-party/unsafe/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/thirty-party/grpc/interceptor/client/client.go" beforeDir="false" afterPath="$PROJECT_DIR$/thirty-party/grpc/interceptor/client/client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/thirty-party/grpc/interceptor/server/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/thirty-party/grpc/interceptor/server/server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/thirty-party/pflag/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/thirty-party/pflag/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/thirty-party/test/main/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/thirty-party/test/main/server_test.go" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="true" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="29ExyCm60qgVIaRG1PBBJO3xWr8" />
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.format.on.save.advertiser.fired": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "go.import.settings.migrated": "true",
+    "last_opened_file_path": "/Users/apple/go/src/ktools"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="61ad5663-d9b2-4ef4-82bc-dab781d2149f" name="变更" comment="" />
+      <created>1652692298500</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1652692298500</updated>
+      <workItem from="1652692300348" duration="177000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>false</integration-enabled>
+    <settings-migrated>true</settings-migrated>
   </component>
 </project>

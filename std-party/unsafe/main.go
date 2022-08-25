@@ -1,30 +1,44 @@
 package main
 
 import (
-    "database/sql"
     "fmt"
-    "github.com/pkg/errors"
+    "unsafe"
 )
 
-type P struct {
-    Name string `json:"name"`
-    Age  int32  `json:"age"`
-}
-
-func foo() error {
-    return errors.Wrap(sql.ErrNoRows, "foo error")
-}
-
-func bar() error {
-    return errors.WithMessage(foo(), "bar error")
+type User struct {
+    i int
+    j int
 }
 
 func main() {
-    err := bar()
-    if errors.Cause(err) == sql.ErrNoRows {
-        fmt.Printf("%v\n", err)
-        fmt.Println("-------------")
-        fmt.Printf("%+v\n", err) // %+v是打印调用栈信息
-    }
+    var i int = 5
+    var a = [100]int{}
+    var s = []int{}
+    var u User
+
+    fmt.Println(unsafe.Sizeof(i)) // 8byte
+    fmt.Println(unsafe.Sizeof(a)) // 800bytet
+    fmt.Println(unsafe.Sizeof(s)) // 24byte: 切片描述符长度
+    fmt.Println(unsafe.Sizeof(u)) // 16byte: 字段之和
+
+    fmt.Println(unsafe.Alignof(i)) // 8byte
+    fmt.Println(unsafe.Alignof(a)) // 8bytet
+    fmt.Println(unsafe.Alignof(s)) // 8byte
+    fmt.Println(unsafe.Alignof(u)) // 8byte
+
+    Foo(&User{i: 0, j: 1})
+
+    var p = &i
+    fmt.Println(unsafe.Sizeof(p))
+    var r rune = 's'
+    fmt.Println(unsafe.Sizeof(r))
 }
 
+func Foo(u *User) {
+    ptr := unsafe.Pointer(u)
+    i := (*int)(ptr)                                                 // 第一字段地址
+    j := (*int)(unsafe.Pointer(uintptr(ptr) + unsafe.Offsetof(u.j))) // 第二字段地址
+    *j += 1                                                          // 修改第二字段值
+
+    fmt.Println(i)
+}

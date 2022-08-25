@@ -1,29 +1,19 @@
 package main
 
 import (
-    "fmt"
-    "io/ioutil"
-    "log"
-    "strings"
+	"fmt"
+	"github.com/pkg/errors"
 )
 
 func main() {
-    //f, err := os.Open("std-party/dir/test.txt")
-    //if err != nil {
-    //    log.Fatalln(err)
-    //}
-    
-    bs, err := ioutil.ReadFile("std-party/dir/test.txt")
-    if err != nil {
-        log.Fatalln(err)
-    }
-    
-    b := string(bs)
-    
-    bb := strings.Split(b, "\n")
-    for _, b := range bb {
-        fmt.Println(b)
-    }
-    
-    
+	err := foo()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+}
+
+func foo() error {
+	return errors.New("kacker")
 }

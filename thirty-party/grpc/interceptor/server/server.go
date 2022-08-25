@@ -3,8 +3,8 @@ package main
 import (
     "context"
     "fmt"
+    "github.com/kackerx/katools/thirty-party/grpc/interceptor/proto"
     "google.golang.org/grpc"
-    "learn_go/thirty_party/grpc/interceptor/proto"
     "net"
 )
 
@@ -21,18 +21,18 @@ func main() {
         return handler(ctx, req)
     }
     opt := grpc.UnaryInterceptor(interceptor)
-    
+
     server := grpc.NewServer(opt)
     proto.RegisterHelloServer(server, &Server{}) // 注册对象
-    
+   
     listener, err := net.Listen("tcp", "127.0.0.1:9999")
     if err != nil {
         panic(err)
     }
-    
+
     err = server.Serve(listener)
     if err != nil {
         panic(err)
     }
-    
+
 }
